@@ -29,7 +29,7 @@ const NewMusicForm = () => {
 
   // TODO: stripHtmlEntities
 
-  const handleSubmit = async (e) => {
+  const onClickSubmitButton = async (e) => {
     e.preventDefault();
 
     if (name === "" || composerId === null || visibleTo === null) {
@@ -66,7 +66,7 @@ const NewMusicForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <FormControl>
         <FormLabel htmlFor="name">曲名</FormLabel>
         <Input
@@ -125,7 +125,7 @@ const NewMusicForm = () => {
           <option value="private">自分のみに公開</option>
         </Select>
       </FormControl>
-      <Button onClick={handleSubmit}>投稿</Button>
+      <Button onClick={onClickSubmitButton}>投稿</Button>
     </form>
   );
 };

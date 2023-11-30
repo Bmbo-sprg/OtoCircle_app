@@ -17,7 +17,7 @@ class Api::V1::MusicsController < ApplicationController
 
   def show
     if @music
-      render json: @music, status: :ok
+      render json: @music.as_json(include: [:composer]), status: :ok
     else
       render json: @music.errors, status: :unprocessable_entity
     end
