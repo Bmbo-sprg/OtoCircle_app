@@ -5,7 +5,7 @@ class ChangePlaylistOwnerToPolymorphic < ActiveRecord::Migration[7.1]
   end
 
   def down
-    drop_table :user_playlist_relations
-    drop_table :circle_playlist_relations
+    remove_column :playlists, :owner_type
+    remove_column :playlists, :owner_id
   end
 end
