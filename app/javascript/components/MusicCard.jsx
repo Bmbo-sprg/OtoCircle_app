@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Card,
   CardBody,
   CardHeader,
   Heading,
+  Link,
   Stack,
   StackDivider,
   Text,
@@ -12,7 +14,9 @@ import {
 
 const MusicCard = (props) => {
   const {
+    id,
     name,
+    composer_id,
     composer_name,
     length,
     bpm,
@@ -20,11 +24,13 @@ const MusicCard = (props) => {
     created_at
   } = props;
 
+  const navigate = useNavigate();
+
   return (
-    <Card>
+    <Card maxH="50vh" overflow="hidden">
       <CardHeader>
-        <Heading size="md">{name}</Heading>
-        <Text>{composer_name}</Text>
+        <Link href={`/musics/${id}`}><Heading size="md">{name}</Heading></Link>
+        <Link href={`/composers/${composer_id}`}>{composer_name}</Link>
       </CardHeader>
 
       <CardBody>

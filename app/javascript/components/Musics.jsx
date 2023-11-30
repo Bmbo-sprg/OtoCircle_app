@@ -14,45 +14,7 @@ const Musics = () => {
         const res = await fetch("/api/v1/musics");
         if (res.ok) {
           const data = await res.json();
-          // setMusics(data);
-          setMusics([
-            {
-              id: 1,
-              name: "music1",
-              composer_name: "composer1",
-              length: "length1",
-              bpm: "bpm1",
-              description: "description1",
-              created_at: "created_at1"
-            },
-            {
-              id: 2,
-              name: "music2",
-              composer_name: "composer2",
-              length: "length2",
-              bpm: "bpm2",
-              description: "description2",
-              created_at: "created_at2"
-            },
-            {
-              id: 3,
-              name: "music3",
-              composer_name: "composer3",
-              length: "length3",
-              bpm: "bpm3",
-              description: "description3",
-              created_at: "created_at3"
-            },
-            {
-              id: 3,
-              name: "music3",
-              composer_name: "composer3",
-              length: "length3",
-              bpm: "bpm3",
-              description: "description3",
-              created_at: "created_at3"
-            }
-          ]);
+          setMusics(data);
         } else {
           throw new Error("Network response was not ok.");
         }
@@ -66,9 +28,11 @@ const Musics = () => {
 
   const allMusics = musics.map((music, index) => (
     <MusicCard
+      id={music.id}
       key={index}
       name={music.name}
-      composer_name={music.composer_name}
+      composer_id={music.composer.id}
+      composer_name={music.composer.name}
       length={music.length}
       bpm={music.bpm}
       description={music.description}
