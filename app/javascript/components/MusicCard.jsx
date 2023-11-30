@@ -1,0 +1,54 @@
+import React from "react";
+import {
+  Box,
+  Card,
+  CardBody,
+  CardHeader,
+  Heading,
+  Stack,
+  StackDivider,
+  Text,
+} from "@chakra-ui/react";
+
+const MusicCard = (props) => {
+  const {
+    name,
+    composer_name,
+    length,
+    bpm,
+    description,
+    created_at
+  } = props;
+
+  return (
+    <Card>
+      <CardHeader>
+        <Heading size="md">{name}</Heading>
+        <Text>{composer_name}</Text>
+      </CardHeader>
+
+      <CardBody>
+        <Stack divider={<StackDivider />} spacing={4}>
+          <Box>
+            <Text>{"長さ: "}</Text>
+            <Text>{length}</Text>
+          </Box>
+          <Box>
+            <Text>{"BPM: "}</Text>
+            <Text>{bpm}</Text>
+          </Box>
+          <Box>
+            <Heading size="xs">{"説明"}</Heading>
+            <Text>{description}</Text>
+          </Box>
+          <Box>
+            <Text>{"投稿日: "}</Text>
+            <Text>{created_at}</Text>
+          </Box>
+        </Stack>
+      </CardBody>
+    </Card>
+  )
+};
+
+export default MusicCard;
