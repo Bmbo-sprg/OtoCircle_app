@@ -11,4 +11,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   attribute :is_system_admin, :boolean, default: false
+
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 }
 end

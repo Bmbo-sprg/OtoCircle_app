@@ -9,12 +9,16 @@
 #   end
 
 # Add admin user
-User.find_or_create_by!(
-  login_id: 'admin',
-  is_system_admin: true,
-  name: 'admin',
-  bio: 'admin',
-)
+if !User.find_by(login_id: 'admin').present?
+  User.create(
+    login_id: 'admin',
+    password: 'adminpass',
+    password_confirmation: 'adminpass',
+    is_system_admin: true,
+    name: 'admin',
+    bio: 'admin',
+  )
+end
 
 Circle.find_or_create_by!(
   name: 'admin_circle',
