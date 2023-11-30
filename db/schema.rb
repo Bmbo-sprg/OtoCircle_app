@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_30_064523) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_070451) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,8 +61,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_064523) do
     t.string "visible_to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "owner_type"
-    t.integer "owner_id"
+    t.string "creator_type"
+    t.integer "creator_id"
   end
 
   create_table "user_circle_members", force: :cascade do |t|
