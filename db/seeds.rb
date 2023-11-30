@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# Add admin user
+User.find_or_create_by!(
+  login_id: 'admin',
+  is_system_admin: true,
+  name: 'admin',
+  bio: 'admin',
+)
