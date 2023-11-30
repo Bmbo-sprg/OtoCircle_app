@@ -15,3 +15,22 @@ User.find_or_create_by!(
   name: 'admin',
   bio: 'admin',
 )
+
+Circle.find_or_create_by!(
+  name: 'admin_circle',
+  owner_id: User.find_by(login_id: 'admin').id,
+)
+
+Composer.find_or_create_by!(
+  name: 'admin_composer',
+)
+
+UserCircleMember.find_or_create_by!(
+  user_id: User.find_by(login_id: 'admin').id,
+  circle_id: Circle.find_by(name: 'admin_circle').id,
+)
+
+UserComposerMember.find_or_create_by!(
+  user_id: User.find_by(login_id: 'admin').id,
+  composer_id: Composer.find_by(name: 'admin_composer').id,
+)
