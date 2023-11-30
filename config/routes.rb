@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get '/musics', to: 'musics#index'
+      post '/musics', to: 'musics#create'
+      get '/musics/:id', to: 'musics#show'
+      delete '/musics/:id', to: 'musics#destroy'
+    end
+  end
   root 'homepage#index'
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
