@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Box,
   Card,
@@ -23,8 +22,6 @@ const MusicCard = (props) => {
     description,
     created_at
   } = props;
-
-  const navigate = useNavigate();
 
   return (
     <Card maxH="50vh" overflow="hidden">

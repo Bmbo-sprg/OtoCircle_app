@@ -15,34 +15,29 @@ import {
   TableContainer
 } from "@chakra-ui/react";
 
-const Music = () => {
+const User = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const [music, setMusic] = useState({
+  const [user, setUser] = useState({
+    login_id: "",
     name: "",
-    composer: {
-      id: 0,
-      name: ""
-    },
-    length: 0,
-    bpm: 0,
-    description: "",
-    created_at: ""
+    is_system_admin: false,
+    bio: ""
   });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/v1/musics/${params.id}`);
+        const res = await fetch(`/api/v1/users/${params.id}`);
         if (res.ok) {
           const data = await res.json();
-          setMusic(data);
+          setUser(data);
         } else {
           throw new Error("Network response was not ok.");
         }
       } catch (err) {
         console.error(err);
-        navigate("/musics");
+        navigate("/users");
       }
     };
     fetchData();
@@ -50,7 +45,7 @@ const Music = () => {
 
   const onClickDeleteButton = async () => {
     try {
-      const res = await fetch(`/api/v1/musics/${params.id}`, {
+      const res = await fetch(`/api/v1/users/${params.id}`, {
         method: "DELETE",
         headers: {
           "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content,
@@ -58,7 +53,7 @@ const Music = () => {
       });
       if (res.ok) {
         alert("削除しました");
-        navigate("/musics");
+        navigate("/users");
       } else {
         throw new Error("Network response was not ok.");
       }
@@ -73,41 +68,35 @@ const Music = () => {
         <SideNav />
       </Flex>
       <Flex direction="column" w="100%" px={2} gap={2} overflow="hidden">
-        <Heading size="md" my={8}>{music.name}</Heading>
+        <Heading size="md" my={8}>{user.name}</Heading>
         <TableContainer>
           <Table variant="simple">
             <Tbody>
               <Tr>
-                <Th>作曲者</Th>
-                <Td>
-                  <Link href={`/composers/${music.composer.id}`}>{music.composer.name}</Link>
-                </Td>
+                <Th>ログインID</Th>
+                <Td>{user.login_id}</Td>
               </Tr>
               <Tr>
-                <Th>長さ</Th>
-                <Td>{music.length}</Td>
+                <Th>パスワード</Th>
+                <Td>{"********"}</Td>
               </Tr>
               <Tr>
-                <Th>BPM</Th>
-                <Td>{music.bpm}</Td>
+                <Th>システム管理権限</Th>
+                <Td>{user.is_system_admin ? "はい" : "いいえ"}</Td>
               </Tr>
               <Tr>
-                <Th>説明</Th>
-                <Td>{music.description}</Td>
-              </Tr>
-              <Tr>
-                <Th>投稿日</Th>
-                <Td>{music.created_at}</Td>
+                <Th>自己紹介</Th>
+                <Td>{user.bio}</Td>
               </Tr>
             </Tbody>
           </Table>
         </TableContainer>
         <Button colorScheme="red" onClick={onClickDeleteButton}>
-          <Text>この楽曲を削除する</Text>
+          <Text>このユーザーを削除する</Text>
         </Button>
       </Flex>
     </Flex>
   );
 };
 
-export default Music;
+export default User;
