@@ -256,73 +256,68 @@ playlists ||--o{ user_playlist_relations: "1:n"
 playlists ||--o{ circle_playlist_relations: "1:n"
 
 users {
-    integer internal_id PK "not null"
-    string external_id "not null / unique"
-    string password "not null (hash)"
-    boolean is_system_admin "not null / default false"
-    string name "not null"
-    text bio
+    +integer id PK "not null"
+    +string login_id "not null / unique"
+    string password_digest "not null"
+    +boolean is_system_admin "not null / default false"
+    +string name "not null"
+    +text bio
 }
 
 composers {
-    integer id PK "not null"
-    string name "not null"
+    +integer id PK "not null"
+    +string name "not null"
 }
 
 user_composer_members {
-    integer user_id PK,FK "not null"
-    integer composer_id PK,FK "not null"
+    +integer user_id PK,FK "not null"
+    +integer composer_id PK,FK "not null"
     datetime deleted_at
 }
 
 circles {
-    integer id PK "not null"
-    string name "not null"
-    integer owner_id FK "not null"
+    +integer id PK "not null"
+    +string name "not null"
+    +integer owner_id FK "not null"
 }
 
 user_circle_members {
-    integer user_id PK,FK "not null"
-    integer circle_id PK,FK "not null"
+    +integer user_id PK,FK "not null"
+    +integer circle_id PK,FK "not null"
     datetime joined_at "not null"
     datetime deleted_at
 }
 
 musics {
-    integer id PK "not null"
-    string name "not null"
-    integer composer_id FK "not null"
-    float length
-    float bpm
-    text lyrics
-    text description
-    string(enum) visible_to "not null"
+    +integer id PK "not null"
+    +string name "not null"
+    +integer composer_id FK "not null"
+    +decimal length
+    +decimal bpm
+    +text lyrics
+    +text description
+    +string(enum) visible_to "not null"
 }
 
-user_playlist_relations {
+music_playlist_relations {
+    integer music_id PK,FK "not null"
     integer playlist_id PK,FK "not null"
-    integer user_id FK "not null"
-}
-
-circle_playlist_relations {
-    integer playlist_id PK,FK "not null"
-    integer circle_id FK "not null"
 }
 
 playlists {
-    integer id PK "not null"
-    string name "not null"
-    text description
-    string(enum) visible_to "not null"
+    +integer id PK "not null"
+    +string name "not null"
+    +text description
+    +string(enum) visible_to "not null"
     datetime deleted_at
 }
 
 comments {
-    integer id PK "not null"
-    integer music_id FK "not null"
-    integer user_id FK "not null"
-    float position
-    text contents "not null"
+    +integer id PK "not null"
+    +integer music_id FK "not null"
+    +integer user_id FK "not null"
+    +decimal position
+    +text contents "not null"
 }
 ```
 

@@ -10,16 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_30_052741) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_064523) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "circle_playlist_relations", force: :cascade do |t|
-    t.integer "playlist_id"
-    t.integer "circle_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "circles", force: :cascade do |t|
     t.string "name"
@@ -43,6 +36,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_052741) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "music_playlist_relations", force: :cascade do |t|
+    t.integer "music_id"
+    t.integer "playlist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "musics", force: :cascade do |t|
     t.string "name"
     t.integer "composer_id"
@@ -61,6 +61,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_052741) do
     t.string "visible_to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "owner_type"
+    t.integer "owner_id"
   end
 
   create_table "user_circle_members", force: :cascade do |t|
@@ -73,13 +75,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_052741) do
   create_table "user_composer_members", force: :cascade do |t|
     t.integer "user_id"
     t.integer "composer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_playlist_relations", force: :cascade do |t|
-    t.integer "playlist_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

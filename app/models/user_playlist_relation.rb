@@ -1,2 +1,0 @@
-class UserPlaylistRelation < ApplicationRecord
-end
