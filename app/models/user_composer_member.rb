@@ -1,0 +1,2 @@
+class UserComposerMember < ApplicationRecord
+end

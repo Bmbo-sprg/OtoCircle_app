@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  music_id: 1
+  user_id: 1
+  position: 9.99
+  contents: MyText
+
+two:
+  music_id: 1
+  user_id: 1
+  position: 9.99
+  contents: MyText

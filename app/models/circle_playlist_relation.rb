@@ -1,0 +1,2 @@
+class CirclePlaylistRelation < ApplicationRecord
+end

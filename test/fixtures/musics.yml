@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  composer_id: 1
+  length: 9.99
+  bpm: 9.99
+  lyrics: MyText
+  description: MyText
+  visible_to: MyString
+
+two:
+  name: MyString
+  composer_id: 1
+  length: 9.99
+  bpm: 9.99
+  lyrics: MyText
+  description: MyText
+  visible_to: MyString
