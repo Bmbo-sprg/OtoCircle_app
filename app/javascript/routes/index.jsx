@@ -10,6 +10,9 @@ import NewUser from "../components/NewUser";
 import Composers from "../components/Composers";
 import Composer from "../components/Composer";
 import NewComposer from "../components/NewComposer";
+import Circles from "../components/Circles";
+import Circle from "../components/Circle";
+import NewCircle from "../components/NewCircle";
 
 export default (
   <Router>
@@ -24,6 +27,9 @@ export default (
       <Route path="/composers" element={<Composers />} />
       <Route path="/composers/:id" element={<Composer />} />
       <Route path="/composers/new" element={<NewComposer />} />
+      <Route path="/circles" element={<Circles />} />
+      <Route path="/circles/:id" element={<Circle />} />
+      <Route path="/circles/new" element={<NewCircle />} />
     </Routes>
   </Router>
 );
