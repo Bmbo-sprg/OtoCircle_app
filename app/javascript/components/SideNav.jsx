@@ -9,14 +9,14 @@ export default () => {
       </Heading>
       <Flex direction="column" mb={8}>
         <Link href="/musics">音楽を探す</Link>
-        <Link href="/playlists">プレイリストを探す</Link>
+        <Link href="/playlists">プレイリストを探す (工事中)</Link>
         <Link href="/circles">サークルを探す</Link>
         <Link href="/composers">作曲者を探す</Link>
         <Link href="/users">ユーザーを探す</Link>
       </Flex>
       <Flex direction="column" mb={8}>
         <Link href="/musics/new">音楽を投稿する</Link>
-        <Link href="/playlists/new">プレイリストを作る</Link>
+        <Link href="/playlists/new">プレイリストを作る (工事中)</Link>
         <Link href="/circles/new">サークルを作る</Link>
         <Link href="/composers/new">作曲者を作る</Link>
         <Link href="/users/new">ユーザーを作る</Link>
