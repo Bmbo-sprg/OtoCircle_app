@@ -17,6 +17,9 @@ export default () => {
       <Flex direction="column" mb={8}>
         <Link href="/musics/new">音楽を投稿する</Link>
         <Link href="/playlists/new">プレイリストを作る</Link>
+        <Link href="/circles/new">サークルを作る</Link>
+        <Link href="/composers/new">作曲者を作る</Link>
+        <Link href="/users/new">ユーザーを作る</Link>
       </Flex>
       <Flex direction="column" mb={8}>
         <Link href="/users/1">me</Link>

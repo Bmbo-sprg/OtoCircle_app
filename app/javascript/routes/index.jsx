@@ -7,6 +7,9 @@ import NewMusic from "../components/NewMusic";
 import Users from "../components/Users";
 import User from "../components/User";
 import NewUser from "../components/NewUser";
+import Composers from "../components/Composers";
+import Composer from "../components/Composer";
+import NewComposer from "../components/NewComposer";
 
 export default (
   <Router>
@@ -18,6 +21,9 @@ export default (
       <Route path="/users" element={<Users />} />
       <Route path="/users/:id" element={<User />} />
       <Route path="/users/new" element={<NewUser />} />
+      <Route path="/composers" element={<Composers />} />
+      <Route path="/composers/:id" element={<Composer />} />
+      <Route path="/composers/new" element={<NewComposer />} />
     </Routes>
   </Router>
 );

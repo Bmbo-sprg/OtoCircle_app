@@ -13,6 +13,7 @@ const NewMusicForm = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [composerId, setComposerId] = useState(null);
+  const [composers, setComposers] = useState([]);
   const [length, setLength] = useState(null);
   const [bpm, setBpm] = useState(null);
   const [lyrics, setLyrics] = useState("");
@@ -25,6 +26,22 @@ const NewMusicForm = () => {
       alert(errors.join(", "));
       setErrors([]);
     }
+
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`/api/v1/composers`);
+        if (res.ok) {
+          const data = await res.json();
+          setComposerId(data[0].id);
+          setComposers(data);
+        } else {
+          throw new Error("Network response was not ok.");
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchData();
   }, [errors, setErrors]);
 
   // TODO: stripHtmlEntities
@@ -33,7 +50,7 @@ const NewMusicForm = () => {
     e.preventDefault();
 
     if (name === "" || composerId === null || visibleTo === null) {
-      setErrors(["曲名、作曲者は必須です", name, composerId]);
+      setErrors(["曲名、作曲者は必須です"]);
       return;
     }
 
@@ -77,12 +94,16 @@ const NewMusicForm = () => {
         />
 
         <FormLabel htmlFor="composerId">作曲者</FormLabel>
-        <Input
+        <Select
           id="composerId"
           name="composerId"
-          type="number"
           onChange={(e) => setComposerId(e.target.value)}
-        />
+          defaultValue={composerId}
+        >
+          {composers.map((composer) => (
+            <option key={composer.id} value={composer.id}>{composer.name}</option>
+          ))}
+        </Select>
 
         <FormLabel htmlFor="length">長さ (秒)</FormLabel>
         <Input

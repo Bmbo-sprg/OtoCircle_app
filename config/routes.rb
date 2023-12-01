@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      get '/composers', to: 'composers#index'
+      post '/composers', to: 'composers#create'
+      get '/composers/:id', to: 'composers#show'
+      delete '/composers/:id', to: 'composers#destroy'
       get '/users', to: 'users#index'
       post '/users', to: 'users#create'
       get '/users/:id', to: 'users#show'
